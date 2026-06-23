@@ -3,9 +3,6 @@
 // put  --> 
 // patch -->
 // delete -->
-let a:number = 10
-
-
 import {APIRequestContext,APIResponse} from '@playwright/test'
 
 export class RequestHandler{
