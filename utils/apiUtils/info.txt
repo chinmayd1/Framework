@@ -1,0 +1,73 @@
+
+
+// schema
+// response
+{
+
+    "success":"true",
+    "cliamID":"12345",
+    "claimNumber":101
+
+}
+
+// validation
+expect(response.success).toBe(true)
+expect(response.claimID).toBeDefined()
+expect(response.claimNumber).toBeDefined()
+
+// what if response if of 100 lines 
+
+// schema validation ??
+what is schema ?
+
+{
+    type:"object",
+    properties:{
+        success:{
+            type:"boolean"
+        },
+        claimId:{
+            type:"string"
+        },
+        claimNumber:{
+            type:number
+        },
+
+    required:[
+        success,
+        cliamId,
+        claimNumber
+
+    ]
+
+    }
+
+};
+////////////////////////////////////////////////////
+
+
+// or ESM/TypeScript import
+import Ajv from "ajv"
+// Node.js require:
+const Ajv = require("ajv")
+
+const ajv = new Ajv() // options can be passed, e.g. {allErrors: true}
+
+const schema = {
+  type: "object",
+  properties: {
+    foo: {type: "integer"},
+    bar: {type: "string"},
+  },
+  required: ["foo"],
+  additionalProperties: false,
+}
+
+const data = {
+  foo: 1,
+  bar: "abc",
+}
+
+const validate = ajv.compile(schema)
+const valid = validate(data)
+if (!valid) console.log(validate.errors)
